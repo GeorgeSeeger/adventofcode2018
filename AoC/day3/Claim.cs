@@ -52,6 +52,9 @@ using System.Text.RegularExpressions;
             }
 
             Console.WriteLine($"Overlaps: {overlaps.Count}");
+
+            var noOverlaps = claims.Single(claim => !claim.Coords.Any(overlaps.Contains));
+            Console.WriteLine($"Only {noOverlaps.Id} doesn't have overlaps");
         }
     }
 }
