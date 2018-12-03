@@ -1,12 +1,10 @@
-﻿using System;
+﻿namespace AoC {
+using System;
 
-namespace AoC
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
+    class Program {
+        static void Main(string[] args) {
+            // Day 3
+            Claim.GetOverlaps();
         }
     }
 }
