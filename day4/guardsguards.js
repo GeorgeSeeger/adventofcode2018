@@ -28,9 +28,13 @@ class Guard {
   get mostSleptMinute() {
     var a = this.sleepingMinutes.slice()
                                 .sort((a, b) => 
-        this.sleepingMinutes.filter(v => v === b).length
-         - this.sleepingMinutes.filter(v => v === a).length);
+          this.sleepingMinutes.filter(v => v === b).length
+          - this.sleepingMinutes.filter(v => v === a).length);
     return a[0];
+  }
+
+  timesSleptAt(minute) {
+    return this.sleepingMinutes.filter(m => m === minute).length;
   }
 }
 
@@ -58,7 +62,10 @@ for (var i = 0; i < input.length; i++) {
   }
 }
 
-let sleepiestGuard = Object.values(guards).sort((a, b) => b.timeAsleep - a.timeAsleep)[0];
-
 //part 1
+let sleepiestGuard = Object.values(guards).sort((a, b) => b.timeAsleep - a.timeAsleep)[0];
 console.log(sleepiestGuard.id * sleepiestGuard.mostSleptMinute)
+
+// part 2
+let consistentestGuard = Object.values(guards).sort((a, b) => b.timesSleptAt(b.mostSleptMinute) - a.timesSleptAt(a.mostSleptMinute))[0];
+console.log(consistentestGuard.id * consistentestGuard.mostSleptMinute);
