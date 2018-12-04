@@ -1,4 +1,3 @@
-let moment = require('moment');
 let fs = require('fs');
 
 class Guard {
@@ -27,10 +26,11 @@ class Guard {
   }
 
   get mostSleptMinute() {
-    var a = this.sleepingMinutes.slice().sort((a, b) => 
+    var a = this.sleepingMinutes.slice()
+                                .sort((a, b) => 
         this.sleepingMinutes.filter(v => v === b).length
          - this.sleepingMinutes.filter(v => v === a).length);
-    return a.pop();
+    return a[0];
   }
 }
 
@@ -61,4 +61,4 @@ for (var i = 0; i < input.length; i++) {
 let sleepiestGuard = Object.values(guards).sort((a, b) => b.timeAsleep - a.timeAsleep)[0];
 
 //part 1
-console.log(sleepiestGuard.timeAsleep * sleepiestGuard.mostSleptMinute)
+console.log(sleepiestGuard.id * sleepiestGuard.mostSleptMinute)
